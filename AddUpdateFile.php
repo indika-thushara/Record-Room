@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -15,16 +16,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="formHeader">
-                    <h4>Add/Update File</h4>
+                    Add/Update File
                 </div>
                 <form class="p-4">
                     <div class="mt-3">
-                        <label for="fname" class="form-label">File Name</label>
-                        <input type="text" name="fname" id="fname" class="form-control maxtext-width">
+                        <label for="fnum" class="form-label">File Number</label>
+                        <input type="text" name="fnum" id="fnum" class="form-control" required>
                     </div>
                     <div class="mt-3">
-                        <label for="fnum" class="form-label">File Number</label>
-                        <input type="text" name="fnum" id="fnum" class="form-control">
+                        <label for="fname" class="form-label">File Name</label>
+                        <input type="text" name="fname" id="fname" class="form-control maxtext-width">
                     </div>
                     <div class="mt-3">
                         <label for="ftype" class="form-label">File Type</label>
@@ -58,6 +59,7 @@
                                 class="form-control">
                         </div>
                     </div>
+                    <hr>
                     <div class="mt-3">
                         <label for="bakoffice" class="form-label">File is Get Back to Office On</label>
                         <input type="date" name="bakoffice" id="bakoffice" class="form-control">
@@ -70,16 +72,12 @@
                         <label for="offname" class="form-label">Officer Name</label>
                         <input type="text" name="offname" id="offname" class="form-control">
                     </div>
-                    <div class="form-check mt-3">
-                        <label class="form-check-label" for="recback">
-                            Received Back
-                        </label>
-                        <input class="form-check-input" name="recback" type="checkbox" value="y" id="recback">
-                    </div>
+                   
                     <div class="mt-3">
                         <label for="bakrron" class="form-label">File Received Back to Record Room On</label>
                         <input type="date" name="bakrron" id="bakrron" class="form-control">
                     </div>
+                    <hr>
                     <div class="form-check mt-3">
                         <label class="form-check-label" for="fdes">
                             File Destroyed
@@ -115,10 +113,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('recback').addEventListener('change', function() {
+       /*  document.getElementById('recback').addEventListener('change', function() {
             if (this.checked) {
                 document.getElementById('bakrron').value = '';
             }
+        }); */
+        document.getElementById('bakoffice').addEventListener('change', function() {
+            document.getElementById('bakrron').value = '';            
+            document.getElementById('dname').value='';
+            document.getElementById('offname').value='';
         });
     </script>
 </body>
