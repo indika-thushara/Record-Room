@@ -13,6 +13,14 @@ button {
     width: 150px;
 }
 
+.title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 700; 
+    text-align: center;
+}
+
 form{
     margin-bottom: 20px;
     background-color: rgb(201, 202, 202);
