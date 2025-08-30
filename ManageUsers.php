@@ -13,12 +13,17 @@
     <?php include "header.php" ?>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="title">Manage Users</h1>
-                </div>
+            <div class="col-md-8">
+                <h1 class="title">Manage Users</h1>
             </div>
-            <div class="col-md-12">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <a class="btn btn-primary" href="addnewuser.php" role="button">Add New User</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-3">
                 <div>
                     <table class="table">
                         <thead>
@@ -43,7 +48,7 @@
                             }
                             mysqli_close($conn);
                             ?>
-                           
+
                         </tbody>
                     </table>
                 </div>
