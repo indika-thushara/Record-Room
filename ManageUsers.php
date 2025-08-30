@@ -12,38 +12,38 @@
 <body>
     <?php include "header.php" ?>
     <div class="container">
-        <div class="row justify-content-center">    
+        <div class="row justify-content-center">
             <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="title">Manage Users</h1>
+                <div class="col-12 text-center">
+                    <h1 class="title">Manage Users</h1>
+                </div>
             </div>
-        </div>        
-            <div class="col-md-12">   
+            <div class="col-md-12">
                 <div>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">User Name</th>
-                                <th scope="col">User Role</th>                                
+                                <th scope="col">User Role</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>1</td>                               
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>2</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>3</td>
-                                <td>@social</td>
-                            </tr>
+                            <?php
+                            include("db_connection.php");
+
+                            $result = mysqli_query($conn, "SELECT * FROM users");
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>
+                                <td>" . $row['userName'] . "</td>
+                                <td>" . $row['userRole'] . "</td>
+                                <td>Update</td>
+                                </tr>";
+                            }
+                            mysqli_close($conn);
+                            ?>
+                           
                         </tbody>
                     </table>
                 </div>
