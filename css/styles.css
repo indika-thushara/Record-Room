@@ -13,26 +13,27 @@ button {
     width: 150px;
 }
 
-.title{
+.title {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 30px;
-    font-weight: 700; 
-    text-align: right;
+    font-weight: 700;
+    /*text-align: center;*/
 }
 
-form{
+form {
     margin-bottom: 20px;
     background-color: rgb(201, 202, 202);
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .formHeader {
-    
+
     margin: 50px 0px 0;
-     background-color:  coral;
+    background-color: coral;
     /*border-radius: 5px;    */
     height: 40px;
     display: flex;
@@ -40,8 +41,8 @@ form{
     justify-content: center;
     color: #fff;
     font-size: 20px;
-    font-weight: 500; 
-    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.5));
+    font-weight: 500;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 

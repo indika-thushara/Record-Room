@@ -51,7 +51,7 @@
                                 class="form-control">
                         </div>
                         <div class="col-sm-6 d-flex align-items-center text-nowrap gap-2">
-                            <label class="form-label">Shell No</label><input type="text" maxlength="3" name="shellno"
+                            <label class="form-label">Cell No</label><input type="text" maxlength="3" name="cellNo"
                                 class="form-control">
                         </div>                        
                     </div>

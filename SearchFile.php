@@ -12,12 +12,12 @@
 <body>
     <?php include "header.php" ?>
     <div class="container">
-        <div class="row justify-content-center">            
+        <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="formHeader">
                     <h4>Search File</h4>
                 </div>
-                <form class="p-4">
+                <form action="" class="p-4" method="post">
                     <div class="mt-3">
                         <label for="fname" class="form-label">File Name</label>
                         <input type="text" name="fname" id="fname" class="form-control maxtext-width" placeholder="Enter file name to search">
@@ -30,7 +30,7 @@
                     <div class="mt-3">
                         <div class="row g-3 mt-3 ">
                             <div class="col-sm-6 d-flex justify-content-center gap-2">
-                                <button type="submit" class="btn btn-primary">Search</button>
+                                <button type="submit" name="Submit" id="Submit" class="btn btn-primary" onclick="validate();">Search</button>
                             </div>
                             <div class="col-sm-6  d-flex justify-content-center gap-2">
                                 <button type="reset" class="btn btn-primary">Reset</button>
@@ -39,6 +39,11 @@
                     </div>
 
                 </form>
+
+                <?php
+
+
+                ?>
 
                 <div>
                     <table class="table">
@@ -51,24 +56,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>1</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>2</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>3</td>
-                                <td>Doe</td>
-                                <td>@social</td>
-                            </tr>
+
+                            <?php
+                            //Get the database connection.
+                            include 'db_connection.php';
+                            //Check if the request method is post.
+                            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                                //Check the sbumit button is clicked.                             
+                                if (isset($_POST['Submit'])) {
+                                    $sql = '';
+                                    $sFname = '';
+                                    $sFnum = '';
+                                    $result = '';
+                                    if (!empty($_POST['fname'])) {
+                                        $sFname =  trim($_POST['fname']);
+                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType FROM files f
+                                        INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId                                        
+                                        WHERE fileName LIKE '%" . $sFname . "%'";
+                                    }
+                                    if (!empty($_POST['fnum'])) {
+                                        $sFnum =  trim($_POST['fnum']);
+                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType FROM files f
+                                        INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId    
+                                        WHERE fileNumber = '" . $sFnum . "'";
+                                    }
+
+                                    $result = mysqli_query($conn, $sql);
+
+                                    if ($result === false) {
+                                        die("Query faild..." . $conn->error);
+                                    }
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td>" . $row['fileNumber'] . "</td></tr>";
+                                        }
+                                    }
+                                }
+                            }
+
+                            $conn->close();
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -78,11 +106,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('recback').addEventListener('change', function() {
-            if (this.checked) {
-                document.getElementById('bakrron').value = '';
-            }
+        document.getElementById('fname').addEventListener('change', function() {
+            document.getElementById('fnum').value = '';
         });
+        document.getElementById('fnum').addEventListener('change', function() {
+            document.getElementById('fname').value = '';
+        });
+        function validate() {
+            if (document.getElementById('fnum').value == '' && document.getElementById('fname').value == '')
+                alert("Please enter File Name or File Number.");
+        }
     </script>
 </body>
 
