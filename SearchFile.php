@@ -88,13 +88,13 @@
                                     }
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td>" . $row['fileNumber'] . "</td></tr>";
+                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td></tr>";
                                         }
                                     }
                                 }
                             }
 
-                            $conn->close();
+                            mysqli_close($conn);
                             ?>
 
                         </tbody>
