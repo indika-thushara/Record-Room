@@ -13,7 +13,7 @@
 <body>
     <?php
     include "header.php";
-    include "db_connection.php";
+    require_once "db_connection.php";
     $ufnum = "";
     $sql = "";
     $result = "";
@@ -31,6 +31,16 @@
     $fileDistroiedOn = "";
     $Note = "";
     $fileTypeId = "";
+
+    if (isset($_GET['error'])) {
+            if ($_GET['error'] == 1) {
+                echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
+            }
+
+            if ($_GET['error'] == 2) {
+                echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
+            }
+        }
 
     if (isset($_GET['ufno'])) {
         $ufnum = $_GET['ufno'];
@@ -59,8 +69,10 @@
                 $fileTypeId = $row['fileTypeId'];
             }
         }
+
+        
     }
-    mysqli_close($conn);
+
 
     ?>
     <div class="container">
@@ -69,11 +81,12 @@
                 <div class="formHeader">
                     Add/Update File
                 </div>
-                <form class="p-4">
+                <form class="p-4" action="ActionAddUpdateFile.php" method="post">
                     <div class="mt-3">
                         <label for="fnum" class="form-label">File Number</label>
                         <input type="text" name="fnum" id="fnum" class="form-control" maxlength="100" required value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>">
                     </div>
+                    <input type="hidden" name="ufnum" value="<?php echo !empty($ufnum) ? $ufnum : ''; ?>">
                     <div class="mt-3">
                         <label for="fname" class="form-label">File Name</label>
                         <input type="text" name="fname" id="fname" class="form-control" maxlength="100" required value="<?php echo !empty($fileName) ? $fileName : ''; ?>">
@@ -82,7 +95,6 @@
                         <label for="ftype" class="form-label">File Type</label>
                         <select class="form-select" name="ftype" aria-label="Default select example">
                             <?php
-                            include "db_connection.php";
                             $ftsql = "";
                             $ftsql = "SELECT * FROM file_type";
                             $ftresult = mysqli_query($conn, $ftsql);
@@ -92,7 +104,7 @@
                             if ($ftresult->num_rows > 0) {
                                 while ($row = $ftresult->fetch_assoc()) {
                                     $selected = ($row['fileTypeId'] == $fileTypeId) ? 'selected' : '';
-                                    echo "<option value=" . $row['fileTypeId'] . " " . $selected . ">" . $row['fileType'] . "</option>";                                  
+                                    echo "<option value=" . $row['fileTypeId'] . " " . $selected . ">" . $row['fileType'] . "</option>";
                                 }
                             }
                             mysqli_close($conn);
@@ -141,7 +153,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="note" class="form-label">Note</label>
-                        <textarea id="note" class="form-control" rows="4"><?php echo !empty($Note) ? $Note : ''; ?></textarea>
+                        <textarea id="note" name="note" class="form-control" rows="4"><?php echo !empty($Note) ? $Note : ''; ?></textarea>
                     </div>
                     <div class="mt-3">
                         <div class="row g-3 mt-3">
@@ -151,7 +163,7 @@
                             <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
                                 <button type="reset" class="btn btn-primary">Reset</button>
                             </div>
-                            
+
                         </div>
                     </div>
 
