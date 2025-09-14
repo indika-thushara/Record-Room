@@ -19,7 +19,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a class="btn btn-primary" href="addnewuser.php" role="button">Add New File Type</a>
+                <a class="btn btn-primary" href="addupdatefiletype.php" role="button">Add New File Type</a>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -43,7 +43,7 @@
                                 echo "<tr>                                 
                                 <td>" . $row['fileType'] . "</td>
                                 <td>" . $row['fileTypeDes'] . "</td>
-                                <td>Update</td>
+                                <td><a href='AddUpdateFileType.php?uftid=" . $row['fileTypeId'] . "'>Udate</a></td>
                                 </tr>";
                             }
                             mysqli_close($conn);

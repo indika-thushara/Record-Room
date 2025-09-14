@@ -33,14 +33,20 @@
     $fileTypeId = "";
 
     if (isset($_GET['error'])) {
-            if ($_GET['error'] == 1) {
-                echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
-            }
-
-            if ($_GET['error'] == 2) {
-                echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
-            }
+        if ($_GET['error'] == 1) {
+            echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
         }
+
+        if ($_GET['error'] == 2) {
+            echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
+        }
+    }
+
+    if (isset($_GET['success'])) {
+        if ($_GET['success'] == 1) {
+            echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
+        }
+    }
 
     if (isset($_GET['ufno'])) {
         $ufnum = $_GET['ufno'];
@@ -69,8 +75,6 @@
                 $fileTypeId = $row['fileTypeId'];
             }
         }
-
-        
     }
 
 
