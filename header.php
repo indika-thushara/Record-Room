@@ -36,7 +36,7 @@
                             <a class="nav-link" href="ManageUsers.php">Users</a>
                         </li>
                         <li class="nav-item border-end pe-2 me-2">
-                            <a class="nav-link" href="#">Manage File Types</a>
+                            <a class="nav-link" href="ManageFileTypes.php">Manage File Types</a>
                         </li>                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
