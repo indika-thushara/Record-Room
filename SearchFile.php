@@ -53,6 +53,7 @@
                                 <th scope="col">File Number</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Action</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +79,7 @@
                                         $sFnum =  trim($_POST['fnum']);
                                         $sql = "SELECT f.fileNumber, f.fileName, ft.fileType FROM files f
                                         INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId    
-                                        WHERE fileNumber = '" . $sFnum . "'";
+                                        WHERE fileNumber LIKE '%" . $sFnum . "%'";
                                     }
 
                                     $result = mysqli_query($conn, $sql);
@@ -88,7 +89,11 @@
                                     }
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td></tr>";
+                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
+                                            if($row['fileType'] =='Subdivision' || $row['fileType']=='Building Application')
+                                                echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Add more data</a></td></tr>";
+                                            else
+                                                echo "<td></td></tr>";                                            
                                         }
                                     }
                                 }

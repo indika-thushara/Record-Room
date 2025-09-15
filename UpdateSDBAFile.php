@@ -17,31 +17,31 @@
     $ufnum = "";
     $sql = "";
     $result = "";
+
+
     
-    
-    $fileName = "";
     $fileNumber = "";
     $applicantIdNo = "";
     $assesmentNo = "";
     $ward = "";
     $street = "";
     $approvedOn    = "";
-   
+
 
     if (isset($_GET['error'])) {
-            if ($_GET['error'] == 1) {
-                echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
-            }
-
-            if ($_GET['error'] == 2) {
-                echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
-            }
+        if ($_GET['error'] == 1) {
+            echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
         }
 
-    if (isset($_GET['ufno'])) {
-        $ufnum = $_GET['ufno'];
+        if ($_GET['error'] == 2) {
+            echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
+        }
+    }
 
-        $sql = "SELECT * From files WHERE fileNumber='" . $ufnum . "'";
+    if (isset($_GET['ufno'])) {
+
+        $ufnum =  $_GET['ufno'];
+        $sql = "SELECT * From sdba WHERE fileNumber='" . $ufnum . "'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -50,18 +50,14 @@
         }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $fileName = $row['fileName'];
-                $fileNumber = $row['fileNumber'];
+                $fnum = $row['fileNumber'];
                 $applicantIdNo = $row['applicantIdNo'];
                 $assesmentNo = $row['assesmentNo'];
                 $ward = $row['ward'];
                 $street = $row['street'];
-                $approvedOn    = $row['approvedOn'];
-               
+                $approvedOn = $row['approvedOn'];
             }
         }
-
-        
     }
 
 
@@ -72,58 +68,34 @@
                 <div class="formHeader">
                     Update SD/BA File
                 </div>
-                <form class="p-4" action="ActionAddUpdateFile.php" method="post">
+                <form class="p-4" action="ActionUpdateSDBAFile.php" method="post">
                     <div class="mt-3">
-                        <label for="fnum" class="form-label">File Number</label>
-                        <input type="text" name="fnum" disabled id="fnum" class="form-control" maxlength="100" readonly value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>">
+                        <label for="ufnum" class="form-label">File Number</label>
+                        <input type="text" name="ufnum" id="ufnum" class="form-control" readonly value="<?php echo $ufnum  ?>">
                     </div>
-                    <input type="hidden" name="ufnum" value="<?php echo !empty($ufnum) ? $ufnum : ''; ?>">
-                    <div class="mt-3">
-                        <label for="fname" class="form-label">File Name/Applicant Name</label>
-                        <input type="text" disabled name="fname" id="fname" class="form-control" maxlength="100" readonly value="<?php echo !empty($fileName) ? $fileName : ''; ?>">
-                    </div>
-                    <div class="mt-3">
-                        <label for="ftype" class="form-label">File Type</label>
-                        <select class="form-select" disabled name="ftype" aria-label="Default select example">
-                            <?php
-                            $ftsql = "";
-                            $ftsql = "SELECT * FROM file_type";
-                            $ftresult = mysqli_query($conn, $ftsql);
-                            if ($result === false) {
-                                die("Query failed..." . $conn->error);
-                            }
-                            if ($ftresult->num_rows > 0) {
-                                while ($row = $ftresult->fetch_assoc()) {
-                                    $selected = ($row['fileTypeId'] == $fileTypeId) ? 'selected' : '';
-                                    echo "<option value=" . $row['fileTypeId'] . " " . $selected . ">" . $row['fileType'] . "</option>";
-                                }
-                            }
-                            mysqli_close($conn);
-                            ?>
+                    <input type="hidden" name="fnum" value="<?php echo !empty($fnum) ? $fnum : ''; ?>">
 
-                        </select>
-                    </div>
                     <div class="mt-3">
                         <label for="apidno" class="form-label">Applicant Id No</label>
-                        <input type="text" name="apidno" id="apidno" class="form-control" value="<?php echo !empty($applicantIdNo) ? $applicantIdNo : ''; ?>">
+                        <input type="text" name="apidno" id="apidno" class="form-control" minlength="10" maxlength="12" value="<?php echo  $applicantIdNo  ?>">
                     </div>
                     <div class="mt-3">
                         <label for="assmno" class="form-label">Assessment No</label>
-                        <input type="text" name="assmno" id="assmno" class="form-control" value="<?php echo !empty($assesmentNo) ? $assesmentNo : ''; ?>">
-                    </div>                   
-                    
+                        <input type="text" name="assmno" id="assmno" class="form-control" value="<?php echo  $assesmentNo  ?>">
+                    </div>
+
                     <div class="mt-3">
                         <label for="ward" class="form-label">Ward</label>
-                        <input type="text" name="ward" id="ward" class="form-control" value="<?php echo !empty($ward) ? $ward : ''; ?>">
+                        <input type="text" name="ward" id="ward" class="form-control" value="<?php echo  $ward  ?>">
                     </div>
                     <div class="mt-3">
                         <label for="stre" class="form-label">Street</label>
-                        <input type="text" name="stre" id="stre" class="form-control" value="<?php echo !empty($street) ? $street : ''; ?>">
-                    </div>                    
+                        <input type="text" name="stre" id="stre" class="form-control" value="<?php echo $street  ?>">
+                    </div>
                     <div class="mt-3">
                         <label for="appron" class="form-label">Approved On</label>
-                        <input type="date" name="appron" id="appron" class="form-control" value="<?php echo !empty($approvedOn) ? $approvedOn : ''; ?>">
-                    </div>                                       
+                        <input type="date" name="appron" id="appron" class="form-control" value="<?php echo  $approvedOn ?>">
+                    </div>
                     <div class="mt-3">
                         <div class="row g-3 mt-3">
                             <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">

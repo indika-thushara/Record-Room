@@ -16,8 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $note = $_POST['note'];
     $ftype = $_POST['ftype'];
     $sql = '';
-    if (!empty($_POST['ufnum'])) {
-        //Update file
+    if (!empty($_POST['ufnum'])) {        
         $ufnum = $_POST['ufnum'];
         if ($fnum != $_POST['ufnum']) {
             $sql = "select * from files where fileNumber='" . $fnum . "'";

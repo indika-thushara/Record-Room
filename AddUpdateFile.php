@@ -87,12 +87,12 @@
                 </div>
                 <form class="p-4" action="ActionAddUpdateFile.php" method="post">
                     <div class="mt-3">
-                        <label for="fnum" class="form-label">File Number</label>
+                        <label for="fnum" class="form-label">File Number <span style="color: red;">*</span></label>
                         <input type="text" name="fnum" id="fnum" class="form-control" maxlength="100" required value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>">
                     </div>
                     <input type="hidden" name="ufnum" value="<?php echo !empty($ufnum) ? $ufnum : ''; ?>">
                     <div class="mt-3">
-                        <label for="fname" class="form-label">File Name</label>
+                        <label for="fname" class="form-label">File Name <span style="color: red;">*</span></label>
                         <input type="text" name="fname" id="fname" class="form-control" maxlength="100" required value="<?php echo !empty($fileName) ? $fileName : ''; ?>">
                     </div>
                     <div class="mt-3">
@@ -159,15 +159,10 @@
                         <label for="note" class="form-label">Note</label>
                         <textarea id="note" name="note" class="form-control" rows="4"><?php echo !empty($Note) ? $Note : ''; ?></textarea>
                     </div>
-                    <div class="mt-3">
-                        <div class="row g-3 mt-3">
-                            <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                            <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
-                                <button type="reset" class="btn btn-primary">Reset</button>
-                            </div>
-
+                    <div class="mt-3 text-center">
+                        <div class="d-flex justify-content-center gap-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </div>
 
