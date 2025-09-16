@@ -13,15 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $sql = "update sdba set  applicantIdNo = ?, assesmentNo= ?, ward = ? , street = ?, approvedOn = ? where fileNumber = ?";
         $saveStmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($saveStmt, 'ssssss', $apidno, $assmno, $ward, $stre, $appron, $ufnum);echo $sql;
-        //continue....
+        mysqli_stmt_bind_param($saveStmt, 'ssssss', $apidno, $assmno, $ward, $stre, $appron, $ufnum);        
         if (mysqli_stmt_execute($saveStmt)) {
             header("Location:addUpdateFile.php?success=1");
         }
     } else {        
         $sql = "insert into sdba values (?,?,?,?,?,?)";
         $saveStmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($saveStmt, 'ssssss', $ufnum, $apidno, $assmno, $ward, $stre, $appron);echo $sql;
+        mysqli_stmt_bind_param($saveStmt, 'ssssss', $ufnum, $apidno, $assmno, $ward, $stre, $appron);
         if (mysqli_stmt_execute($saveStmt)) {
             header("Location:addUpdateFile.php?success=1");
         }

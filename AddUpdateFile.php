@@ -35,11 +35,7 @@
     if (isset($_GET['error'])) {
         if ($_GET['error'] == 1) {
             echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
-        }
-
-        if ($_GET['error'] == 2) {
-            echo "<div class='alert alert-danger' role='alert'>Please Select the Course Type</div>";
-        }
+        }        
     }
 
     if (isset($_GET['success'])) {
