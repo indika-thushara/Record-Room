@@ -29,6 +29,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="AddUpdateFile.php">Add New</a></li>
                                 <li><a class="dropdown-item" href="SearchFile.php">Search File</a></li>
+                                <li><a class="dropdown-item" href="SearchSDBAFile.php">Search SD/BA File</a></li>
 
                             </ul>
                         </li>
