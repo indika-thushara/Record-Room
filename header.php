@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <div id="header">
     <div class="my-3 bg-secondary">
         <div class="row text-center text-light">
@@ -38,17 +42,15 @@
                         </li>
                         <li class="nav-item border-end pe-2 me-2">
                             <a class="nav-link" href="ManageFileTypes.php">Manage File Types</a>
-                        </li>                        
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                               <i class="fas fa-user"></i> User
+                                <i class="fas fa-user"></i> <?php echo isset($_SESSION['user'])?$_SESSION['user']."(".$_SESSION['role'].")":'User';?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>                             
-
+                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>
