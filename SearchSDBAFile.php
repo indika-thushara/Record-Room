@@ -78,21 +78,20 @@
                                     }
                                     if (!empty($_POST['assno'])) {
                                         $sassnum =  trim($_POST['assno']);
-                                         $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo FROM files f
+                                        $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo FROM files f
                                         INNER JOIN sdba sb ON f.fileNumber = sb.fileNumber   
                                         WHERE assesmentNo LIKE '%" . $sassnum . "%'";
                                     }
-
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if ($result === false) {
-                                        die("Query faild..." . $conn->error);
-                                    }
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['applicantIdNo'] . "</td><td>" . $row['assesmentNo'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
-                                            echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Update more data</a></td></tr>";
-                                            echo "<td></td></tr>";                                            
+                                    if (!empty($sql)) {
+                                        $result = mysqli_query($conn, $sql);
+                                        if ($result === false) 
+                                            die("Query faild..." . $conn->error);                                        
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['applicantIdNo'] . "</td><td>" . $row['assesmentNo'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
+                                                echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Update more data</a></td></tr>";
+                                                echo "<td></td></tr>";
+                                            }
                                         }
                                     }
                                 }
@@ -116,6 +115,7 @@
         document.getElementById('assno').addEventListener('change', function() {
             document.getElementById('idno').value = '';
         });
+
         function validate() {
             if (document.getElementById('assno').value == '' && document.getElementById('idno').value == '')
                 alert("Please enter ID Number or Assesment Number.");

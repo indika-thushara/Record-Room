@@ -32,17 +32,6 @@
     $Note = "";
     $fileTypeId = "";
 
-    if (isset($_GET['error'])) {
-        if ($_GET['error'] == 1) {
-            echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
-        }        
-    }
-
-    if (isset($_GET['success'])) {
-        if ($_GET['success'] == 1) {
-            echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
-        }
-    }
 
     if (isset($_GET['ufno'])) {
         $ufnum = $_GET['ufno'];
@@ -78,6 +67,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <?php
+                if (isset($_GET['error'])) {
+                    if ($_GET['error'] == 1) {
+                        echo "<div class='alert alert-danger' role='alert'>File Number Already Exist</div>";
+                    }
+                }
+                if (isset($_GET['success'])) {
+                    if ($_GET['success'] == 1) {
+                        echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
+                    }
+                }
+                ?>
                 <div class="formHeader">
                     Add/Update File
                 </div>

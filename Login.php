@@ -9,20 +9,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
-    <?php include "header.php" ?>
+<body>   
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <?php
-
                 if (isset($_GET['error'])) {
                     if ($_GET['error'] == 1) {
                         echo "<div class='alert alert-danger' role='alert'>Username or password is invalid.</div>";
                     }
                 }
-
                 ?>
                 <div class="formHeader">
                     <h4>Login</h4>
@@ -36,15 +32,10 @@
                         <label for="pwd" class="form-label">Password</label>
                         <input type="password" name="pwd" id="pwd" class="form-control" placeholder="Password">
                     </div>
-
                     <div class="mt-3">
-
                         <button type="submit" class="btn btn-primary w-100 g-3 mt-3">Login</button>
-
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>

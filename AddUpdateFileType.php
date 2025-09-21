@@ -22,25 +22,15 @@
     $fileType = "";
     $fileTypeDes = "";
 
-    if (isset($_GET['error'])) {
-        if ($_GET['error'] == 1) {
-            echo "<div class='alert alert-danger' role='alert'>File Type Already Exist</div>";
-        }
-    }
 
-    if (isset($_GET['success'])) {
-        if ($_GET['success'] == 1) {
-            echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
-        }
-    }
 
     if (isset($_GET['uftid'])) {
         $uftid = $_GET['uftid'];
         $sql = "SELECT * FROM file_type WHERE fileTypeId='" . $uftid . "'";
         $result = mysqli_query($conn, $sql);
-        if ($result === false) {
+        if ($result === false)
             die("Query faild..." . $conn->error);
-        }
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $fileTypeId = $row['fileTypeId'];
@@ -55,6 +45,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <?php
+                if (isset($_GET['error']))
+                    if ($_GET['error'] == 1)
+                        echo "<div class='alert alert-danger' role='alert'>File Type Already Exist</div>";
+
+                if (isset($_GET['success']))
+                    if ($_GET['success'] == 1)
+                        echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
+
+                ?>
                 <div class="formHeader">
                     Add/Update File Type
                 </div>

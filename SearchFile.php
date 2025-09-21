@@ -81,19 +81,18 @@
                                         INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId    
                                         WHERE fileNumber LIKE '%" . $sFnum . "%'";
                                     }
-
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if ($result === false) {
-                                        die("Query faild..." . $conn->error);
-                                    }
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
-                                            if($row['fileType'] =='Subdivision' || $row['fileType']=='Building Application')
-                                                echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Add more data</a></td></tr>";
-                                            else
-                                                echo "<td></td></tr>";                                            
+                                    if (!empty($sql)) {
+                                        $result = mysqli_query($conn, $sql);
+                                        if ($result === false)
+                                            die("Query faild..." . $conn->error);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
+                                                if ($row['fileType'] == 'Subdivision' || $row['fileType'] == 'Building Application')
+                                                    echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Add more data</a></td></tr>";
+                                                else
+                                                    echo "<td></td></tr>";
+                                            }
                                         }
                                     }
                                 }
@@ -117,6 +116,7 @@
         document.getElementById('fnum').addEventListener('change', function() {
             document.getElementById('fname').value = '';
         });
+
         function validate() {
             if (document.getElementById('fnum').value == '' && document.getElementById('fname').value == '')
                 alert("Please enter File Name or File Number.");

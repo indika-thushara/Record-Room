@@ -1,5 +1,7 @@
 <?php
 session_start();
+//if(!$_SESSION['user'])
+    //header("Location:login.php");
 ?>
 
 <div id="header">
@@ -34,7 +36,6 @@ session_start();
                                 <li><a class="dropdown-item" href="AddUpdateFile.php">Add New</a></li>
                                 <li><a class="dropdown-item" href="SearchFile.php">Search File</a></li>
                                 <li><a class="dropdown-item" href="SearchSDBAFile.php">Search SD/BA File</a></li>
-
                             </ul>
                         </li>
                         <li class="nav-item border-end pe-2 me-2">

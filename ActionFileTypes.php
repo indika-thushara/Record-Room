@@ -24,6 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (mysqli_stmt_execute($saveStmt))
                     header("Location:AddUpdateFileType.php?success=1");
             }
+        } else {
+            $sql = "update file_type set  fileType = ?, fileTypeDes = ? where fileTypeId = ?";
+            $saveStmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($saveStmt, 'ssi', $ftype, $ftdes, $uftid);
+            if (mysqli_stmt_execute($saveStmt))
+                header("Location:AddUpdateFileType.php?success=1");
         }
     } else {
         $sql = "SELECT * FROM file_type WHERE fileType='" . $_POST['ftype'] . "'";

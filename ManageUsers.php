@@ -13,13 +13,20 @@
     <?php include "header.php" ?>
     <div class="container">
         <div class="row justify-content-center">
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == 1) {
+                    echo "<div class='alert alert-danger' role='alert'>You have no permissions to create users.</div>";
+                }
+            }
+            ?>
             <div class="col-md-8">
                 <h1 class="title">Manage Users</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a class="btn btn-primary" href="addnewuser.php" role="button">Add New User</a>
+                <a class="btn btn-primary" href="addnewuser.php?mode=new" role="button">Add New User</a>
             </div>
         </div>
         <div class="row justify-content-center">
