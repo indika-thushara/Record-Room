@@ -26,7 +26,7 @@ session_start();
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                     <ul class="navbar-nav mx-auto" style="font-size: large; font-weight: bold;">
                         <li class="nav-item border-end pe-2 me-2">
-                            <a class="nav-link" href="Dashboard.php">Dashboard</a>
+                            <a class="nav-link" href="index.php">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown  border-end pe-2 me-2">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">

@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 mysqli_close($conn);
 
 if ($isLoginSuccess) {
-    header("Location:Dashboard.php");
+    header("Location:index.php");
 } else {
     header("Location:login.php?error=1");
 }

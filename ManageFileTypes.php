@@ -43,7 +43,7 @@
                                 echo "<tr>                                 
                                 <td>" . $row['fileType'] . "</td>
                                 <td>" . $row['fileTypeDes'] . "</td>
-                                <td><a href='AddUpdateFileType.php?uftid=" . $row['fileTypeId'] . "'>Udate</a></td>
+                                <td><a href='AddUpdateFileType.php?uftid=" . $row['fileTypeId'] . "'>Update</a></td>
                                 </tr>";
                             }
                             mysqli_close($conn);

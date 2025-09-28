@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New User</title>
+    <title>Add/Update User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -37,21 +37,22 @@
                 }
                 if ($_SESSION['role'] != 'Admin')
                     header("Location:ManageUsers.php?error=1");
-                if (isset($_GET['mode']) && $_GET['mode'] == 'u'&& isset($_GET['uname'])) {
-                    $sql = "select * from users where userName='" . $_GET['uname'] . "'";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result && mysqli_num_rows($result) > 0) {
-
-                        while ($row = $result->fetch_assoc()) {
-                            $uname = $row['userName'];
-                            $uid = $row['userId'];
-                            $urole = $row['userRole'];
+                if (isset($_GET['mode']) && isset($_GET['uname'])) {
+                    if ($_GET['mode'] == 'u' || $_GET['mode'] == 'd') {
+                        $sql = "select * from users where userName='" . $_GET['uname'] . "'";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $uname = $row['userName'];
+                                $uid = $row['userId'];
+                                $urole = $row['userRole'];
+                            }
                         }
                     }
                 }
                 ?>
                 <div class="formHeader">
-                    Add New User
+                    Add/Update User
                 </div>
                 <form action="ActionAddUpdateUser.php" method="post" class="p-4">
                     <div class="mt-3">
@@ -65,8 +66,8 @@
                         <select class="form-select" name="role" id="role">
                             <option value=3 <?php echo ($urole == 'Viewer') ? 'selected' : '' ?>>Viewer</option>
                             <option value=2 <?php echo ($urole == 'Editor') ? 'selected' : '' ?>>Editor</option>
-                            <option value=1 <?php echo ($urole == 'Admin') ? 'selected' : '' ?>>Admin</option>                           
-                            
+                            <option value=1 <?php echo ($urole == 'Admin') ? 'selected' : '' ?>>Admin</option>
+
                         </select>
                     </div>
                     <div class="mt-3">
@@ -78,8 +79,9 @@
                         <input class="form-control" type="password" name="confpwd" id="confpwd" autocomplete="new-password">
                     </div>
                     <div class="mt-3 text-center">
-                        <button type="submit" class="btn btn-primary me-4">Save</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" name="submit" class="btn btn-primary me-4">Save</button>                        
+                        <button type="reset" name="reset" class="btn btn-secondary me-4">Reset</button>
+                        <button type="submit" name="delete" class="btn btn-danger me-4">Delete</button>                        
                     </div>
                 </form>
             </div>

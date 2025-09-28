@@ -17,7 +17,15 @@
                 <?php
                 if (isset($_GET['error'])) {
                     if ($_GET['error'] == 1) {
-                        echo "<div class='alert alert-danger' role='alert'>You have no permissions to create or update users.</div>";
+                        echo "<div class='alert alert-danger' role='alert'>You have no permissions to change users.</div>";
+                    }
+                    if ($_GET['error'] == 2) {
+                        echo "<div class='alert alert-danger' role='alert'>Cannot delete this user.</div>";
+                    }
+                }
+                if (isset($_GET['success'])) {
+                    if ($_GET['success'] == 1) {
+                        echo "<div class='alert alert-primary' role='alert'>User deleted successfully.</div>";
                     }
                 }
                 ?>
@@ -37,7 +45,8 @@
                             <tr>
                                 <th scope="col">User Name</th>
                                 <th scope="col">User Role</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +59,8 @@
                                 echo "<tr>
                                 <td>" . $row['userName'] . "</td>
                                 <td>" . $row['userRole'] . "</td>
-                                <td><a href='AddNewUser.php?mode=u&uname=" . $row['userName'] . "'>Udate</a></td>
+                                <td><a href='AddNewUser.php?mode=u&uname=" . $row['userName'] . "'>Update</a></td>
+                                <td><a href='AddNewUser.php?mode=d&uname=" . $row['userName'] . "'>Delete</a></td>
                                 </tr>";
                             }
                             mysqli_close($conn);
