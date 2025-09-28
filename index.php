@@ -18,31 +18,33 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="img/add.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="AddUpdateFile.php" class="btn btn-primary">Add New FIle</a>
+                        <p>Add a new file into the system</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="img/search.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="SearchFile.php" class="btn btn-primary">Search FIle</a>
+                        <p>Search the files in system</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="img/manage.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="AddUpdateFileType.php" class="btn btn-primary">Manage File Types</a>
+                        <p>Manage the filetypes in system</p>
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="row justify-content-center mt-4">
             <div class="col-md-4">
