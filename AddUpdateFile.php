@@ -31,7 +31,7 @@
     $fileDistroiedOn = "";
     $Note = "";
     $fileTypeId = "";
-
+    $disable = $_SESSION["role"] == 'Viewer'?'disabled':'';
 
     if (isset($_GET['ufno'])) {
         $ufnum = $_GET['ufno'];
@@ -158,7 +158,7 @@
                     </div>
                     <div class="mt-3 text-center">
                         <div class="d-flex justify-content-center gap-3">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" <?php echo $disable ?> class="btn btn-primary">Save</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </div>

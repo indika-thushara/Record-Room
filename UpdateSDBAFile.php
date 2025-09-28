@@ -26,6 +26,7 @@
     $ward = "";
     $street = "";
     $approvedOn    = "";
+    $disable = $_SESSION["role"] == 'Viewer'?'disabled':'';
 
 
     if (isset($_GET['error'])) {
@@ -99,7 +100,7 @@
                     <div class="mt-3">
                         <div class="row g-3 mt-3">
                             <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" <?php echo $disable ?> class="btn btn-primary">Save</button>
                             </div>
                             <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
                                 <button type="reset" class="btn btn-primary">Reset</button>

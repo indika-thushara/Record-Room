@@ -54,7 +54,10 @@
                     if ($_GET['success'] == 1)
                         echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
 
+                if ($_SESSION['role'] == 'Viewer')
+                    header("Location:ManageFileTypes.php?error=1");
                 ?>
+
                 <div class="formHeader">
                     Add/Update File Type
                 </div>

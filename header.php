@@ -1,7 +1,7 @@
 <?php
 session_start();
-//if(!$_SESSION['user'])
-    //header("Location:login.php");
+if(!$_SESSION['user'])
+    header("Location:login.php");
 ?>
 
 <div id="header">

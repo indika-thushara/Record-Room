@@ -14,6 +14,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <?php
+                if (isset($_GET['error'])) {
+                    if ($_GET['error'] == 1) {
+                        echo "<div class='alert alert-danger' role='alert'>You have no permissions to change file types.</div>";
+                    }
+                }
+                ?>
                 <h1 class="title">Manage File Types</h1>
             </div>
         </div>
@@ -27,7 +34,7 @@
                 <div>
                     <table class="table">
                         <thead>
-                            <tr>                                
+                            <tr>
                                 <th scope="col">File Type</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Action</th>

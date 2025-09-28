@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -40,7 +40,7 @@
                 <div class="card">
                     <img src="img/manage.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <a href="AddUpdateFileType.php" class="btn btn-primary">Manage File Types</a>
+                        <a href="ManageFileTypes.php" class="btn btn-primary">Manage File Types</a>
                         <p>Manage the filetypes in system</p>
                     </div>
                 </div>
