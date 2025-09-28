@@ -3,7 +3,6 @@ session_start();
 require_once 'db_connection.php';
 
 $input_hash = hash('sha256', $_POST['pwd']);
-echo $input_hash;
 $sql = "select * from users where userName='{$_POST['uname']}'";
 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 $isLoginSuccess = FALSE;

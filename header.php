@@ -39,7 +39,7 @@ session_start();
                             </ul>
                         </li>
                         <li class="nav-item border-end pe-2 me-2">
-                            <a class="nav-link" href="ManageUsers.php">Users</a>
+                            <a class="nav-link" href="ManageUsers.php">Manage Users</a>
                         </li>
                         <li class="nav-item border-end pe-2 me-2">
                             <a class="nav-link" href="ManageFileTypes.php">Manage File Types</a>
