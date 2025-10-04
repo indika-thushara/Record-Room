@@ -23,6 +23,8 @@
     $fileTypeDes = "";
 
 
+    if ($_SESSION['role'] != 'Admin')
+        header("Location:ManageFileTypes.php?error=1");
 
     if (isset($_GET['uftid'])) {
         $uftid = $_GET['uftid'];

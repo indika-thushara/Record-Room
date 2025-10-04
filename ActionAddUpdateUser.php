@@ -19,45 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($row['userId'] != $uid)
                     header("Location:AddNewUser.php?mode=u&error=2");
                 else {
-                    if (!empty($nupwd)) {
-                        if ($nupwd != $confpwd)
-                            header("Location:AddNewUser.php?mode=u&error=1");
-                        else {
-                            $input_hash = hash('sha256', $nupwd);
-                            $sql = "update users set  userName = ?, userRole= ?, password=? where userId = ?";
-                            $saveStmt = mysqli_prepare($conn, $sql);
-                            mysqli_stmt_bind_param($saveStmt, 'sssi', $nuname, $nurole, $input_hash, $uid);
-                            if (mysqli_stmt_execute($saveStmt)) {
-                                header("Location:AddNewUser.php?success=1");
-                            }
-                        }
-                    } else {
-                        $sql = "update users set  userName = ?, userRole= ? where userId = ?";
+                    if ($nupwd != $confpwd)
+                        header("Location:AddNewUser.php?mode=u&error=1");
+                    else {
+                        $input_hash = hash('sha256', $nupwd);
+                        $sql = "update users set  userName = ?, userRole= ?, password=? where userId = ?";
                         $saveStmt = mysqli_prepare($conn, $sql);
-                        mysqli_stmt_bind_param($saveStmt, 'ssi', $nuname, $nurole, $uid);
+                        mysqli_stmt_bind_param($saveStmt, 'sssi', $nuname, $nurole, $input_hash, $uid);
                         if (mysqli_stmt_execute($saveStmt)) {
                             header("Location:AddNewUser.php?success=1");
                         }
                     }
                 }
         } else {
-            if (!empty($nupwd)) {
-                if ($nupwd != $confpwd)
-                    header("Location:AddNewUser.php?mode=u&error=1");
-                $input_hash = hash('sha256', $nupwd);
-                $sql = "update users set  userName = ?, userRole= ?, password=? where userId = ?";
-                $saveStmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($saveStmt, 'sssi', $nuname, $nurole, $input_hash, $uid);
-                if (mysqli_stmt_execute($saveStmt)) {
-                    header("Location:AddNewUser.php?success=1");
-                }
-            } else {
-                $sql = "update users set  userName = ?, userRole= ? where userId = ?";
-                $saveStmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($saveStmt, 'ssi', $nuname, $nurole, $uid);
-                if (mysqli_stmt_execute($saveStmt)) {
-                    header("Location:AddNewUser.php?success=1");
-                }
+            if ($nupwd != $confpwd)
+                header("Location:AddNewUser.php?mode=u&error=1");
+            $input_hash = hash('sha256', $nupwd);
+            $sql = "update users set  userName = ?, userRole= ?, password=? where userId = ?";
+            $saveStmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($saveStmt, 'sssi', $nuname, $nurole, $input_hash, $uid);
+            if (mysqli_stmt_execute($saveStmt)) {
+                header("Location:AddNewUser.php?success=1");
             }
         }
     } elseif ($_POST['mode'] == 'd') {

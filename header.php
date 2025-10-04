@@ -44,6 +44,9 @@ if(!$_SESSION['user'])
                         <li class="nav-item border-end pe-2 me-2">
                             <a class="nav-link" href="ManageFileTypes.php">Manage File Types</a>
                         </li>
+                        <li class="nav-item border-end pe-2 me-2">
+                            <a class="nav-link" href="Reports.php">Reports</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 <i class="fas fa-user"></i> <?php echo isset($_SESSION['user'])?$_SESSION['user']."(".$_SESSION['role'].")":'User';?>
