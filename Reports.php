@@ -67,26 +67,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <?php
 
-                if (isset($_GET['success'])) {
-                    if ($_GET['success'] == 1) {
-                        echo "<div class='alert alert-primary' role='alert'>Record Saved Successfully</div>";
-                    }
-                }
-                ?>
+
+
 
                 <div class="mt-3">
-                    <div>Files are get back to the offiece</div>
-                    <div class="text-end"><a link type="button"  class="btn btn-secondary">Get report</a></div>
+                    <label for="fnum" class="form-label">File are get back to the offiece</label>
+                    <a link type="button" href="FilesGetBackOffice.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
                 <hr>
-                 <div class="mt-3">
-                    <label for="fnum" class="form-label">File are get back to the offiece</label>
-                    <a link type="button" href="FilesGetBackOffice.php" class="btn btn-secondary">Get report</a>
-                </div>
-
-<!-- <input type="text" name="fnum" id="fnum" class="form-control" maxlength="100" required value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>"> -->
+                <!-- <input type="text" name="fnum" id="fnum" class="form-control" maxlength="100" required value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>"> -->
                 <div class="mt-3 text-center">
                     <div class="d-flex justify-content-center gap-3">
                         <button type="submit" <?php echo $disable ?> class="btn btn-primary">Save</button>
