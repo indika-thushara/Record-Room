@@ -22,6 +22,9 @@
                     if ($_GET['error'] == 2) {
                         echo "<div class='alert alert-danger' role='alert'>Cannot delete this user.</div>";
                     }
+                    if ($_GET['error'] == 3) {
+                        echo "<div class='alert alert-danger' role='alert'>Invalid Action.</div>";
+                    }
                 }
                 if (isset($_GET['success'])) {
                     if ($_GET['success'] == 1) {

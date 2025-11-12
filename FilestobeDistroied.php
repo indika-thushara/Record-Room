@@ -2,22 +2,22 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once 'db_connection.php';
 
-$sql = "Call filesGetBackOff()";
+$sql = "Call filestobedistroid()";
 $result = mysqli_query($conn, $sql);
-$title = "Files are get back to the office.";
+$title = "Files To Be Distroied.";
 $html = "<h2 style='text-align:center; margin-bottom:15px;'>$title</h2>";
 $html .= "<table border='1' cellpadding='8' cellspacing='0' width='100%'>
     <tr style='background:#f2f2f2;'>
-    <th>File number</th><th>File name</th><th>Get back to office on</th><th>Department</th><th>Officer name</th>
+    <th>File number</th><th>File name</th><th>File Closed On</th><th>Rack No</th><th>Cell No</th>
     </tr>";
 
 while ($row = mysqli_fetch_assoc($result)) {
     $html .= "<tr>
         <td>{$row['fileNumber']}</td>
         <td>{$row['fileName']}</td>
-        <td>{$row['getBackOfficeOn']}</td>
-        <td>{$row['departmentName']}</td>
-        <td>{$row['officerName']}</td>        
+        <td>{$row['fileClosedOn']}</td>
+        <td>{$row['rackNo']}</td>
+        <td>{$row['cellNo']}</td>        
         </tr>";
 }
 $html .= "</table>";
@@ -50,4 +50,4 @@ $mpdf->SetHTMLFooter($footer);
 $mpdf->WriteHTML($html);
 
 // Output
-$mpdf->Output("FilesAreGetBacktoOffice.pdf", "I");
+$mpdf->Output("FilestobeDistroied.pdf", "I");

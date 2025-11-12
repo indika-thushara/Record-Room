@@ -56,21 +56,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             };
         }
     } else {
-        if ($nupwd != $confpwd)
-            header("Location:AddNewUser.php?mode=n&error=1");
-        else {
-            $sql = "select * from users where userName='" . $nuname . "'";
-            $result = mysqli_query($conn, $sql);
-            if ($result && mysqli_num_rows($result) > 0) {
-                header("Location:AddNewUser.php?mode=n&error=2");
+        if (isset($_POST['submit'])) {
+            if ($nupwd != $confpwd)
+                header("Location:AddNewUser.php?mode=n&error=1");
+            else {
+                $sql = "select * from users where userName='" . $nuname . "'";
+                $result = mysqli_query($conn, $sql);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    header("Location:AddNewUser.php?mode=n&error=2");
+                }
+                $input_hash = hash('sha256', $nupwd);
+                $sql = "insert into users (userName, userRole, password) values (?,?,?)";
+                $saveStmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($saveStmt, 'sss', $nuname, $nurole, $input_hash);
+                if (mysqli_stmt_execute($saveStmt)) {
+                    header("Location:AddNewUser.php?success=1");
+                }
             }
-            $input_hash = hash('sha256', $nupwd);
-            $sql = "insert into users (userName, userRole, password) values (?,?,?)";
-            $saveStmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($saveStmt, 'sss', $nuname, $nurole, $input_hash);
-            if (mysqli_stmt_execute($saveStmt)) {
-                header("Location:AddNewUser.php?success=1");
-            }
+        }else{
+             header("Location:ManageUsers.php?error=3");
         }
     }
 }

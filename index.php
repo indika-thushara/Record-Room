@@ -15,7 +15,7 @@
     use Dom\Mysql;
 
     include "header.php";
-    
+
     ?>
     <div class="container">
         <div class="row">
@@ -55,7 +55,7 @@
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-4">
-                    <div class="card">                       
+                    <div class="card">
                         <div class="card-body text-center">
                             <?php
                             include "db_connection.php";
@@ -71,38 +71,38 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">                       
+                    <div class="card">
                         <div class="card-body text-center">
                             <?php
                             include "db_connection.php";
-                            $sql = "Call filesGetBackOff()";                            
+                            $sql = "Call filesGetBackOff()";
                             $result = mysqli_query($conn, $sql);
                             if ($result)
-                                $c = mysqli_num_rows($result);                               
+                                $c = mysqli_num_rows($result);
                             mysqli_close($conn);
                             ?>
-                            <?php echo "<h3>" .$c . "</h3>" ?>
+                            <?php echo "<h3>" . $c . "</h3>" ?>
                             <p class="h5">Files are get back to the office.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">                       
+                    <div class="card">
                         <div class="card-body text-center">
                             <?php
                             include "db_connection.php";
-                            $sql = "Call filestobedistroid()";                            
+                            $sql = "Call filestobedistroid()";
                             $result = mysqli_query($conn, $sql);
                             if ($result)
-                                $c = mysqli_num_rows($result);                               
+                                $c = mysqli_num_rows($result);
                             mysqli_close($conn);
                             ?>
-                            <?php echo "<h3>" .$c . "</h3>" ?>
+                            <?php echo "<h3>" . $c . "</h3>" ?>
                             <p class="h5">Files to be distroied.</p>
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 

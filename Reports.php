@@ -64,27 +64,21 @@
 
 
     ?>
-    <div class="container">
+    <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
-
-
-
                 <div class="mt-3">
-                    <label for="fnum" class="form-label">File are get back to the offiece</label>
+                    <label class="form-label">File are get back to the offiece</label>
                     <a link type="button" href="FilesGetBackOffice.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
                 <hr>
-                <!-- <input type="text" name="fnum" id="fnum" class="form-control" maxlength="100" required value="<?php echo !empty($fileNumber) ? $fileNumber : ''; ?>"> -->
-                <div class="mt-3 text-center">
-                    <div class="d-flex justify-content-center gap-3">
-                        <button type="submit" <?php echo $disable ?> class="btn btn-primary">Save</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
+                <div class="mt-3">
+                    <label class="form-label">File to be distroid</label>
+                    <a link type="button" href="FilestobeDistroied.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
+                <hr>              
 
-                </form>
+
             </div>
         </div>
     </div>
