@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <?php
-
-    use Dom\Mysql;
+    <?php   
 
     include "header.php";
+
+    $disable = $_SESSION["role"] == 'Viewer'?'disabled':'';
 
     ?>
     <div class="container">
@@ -28,7 +28,7 @@
                 <div class="card">
                     <img src="img/add.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <a href="AddUpdateFile.php" class="btn btn-primary">Add New FIle</a>
+                        <button href="AddUpdateFile.php" class="btn btn-primary" <?php echo $disable ?>>Add New FIle</button>
                         <p>Add a new file into the system</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="card">
                     <img src="img/search.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <a href="SearchFile.php" class="btn btn-primary">Search FIle</a>
+                        <button href="SearchFile.php" class="btn btn-primary">Search FIle</button>
                         <p>Search files in the system</p>
                     </div>
                 </div>
@@ -51,8 +51,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row justify-content-center mt-4">
                 <div class="col-md-4">
                     <div class="card">

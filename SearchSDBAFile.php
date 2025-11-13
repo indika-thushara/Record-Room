@@ -13,7 +13,7 @@
     <?php include "header.php" ?>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="formHeader">
                     <h4>Search SD/BA File</h4>
                 </div>

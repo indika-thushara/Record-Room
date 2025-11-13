@@ -44,8 +44,6 @@ $footer = '
 
 $mpdf->SetHTMLFooter($footer);
 
-// Water Mark
-
 // Write content
 $mpdf->WriteHTML($html);
 
