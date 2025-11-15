@@ -30,6 +30,13 @@ form {
 
 }
 
+.disabled{
+    pointer-events: none; 
+    cursor: default;   
+    color: gray;        
+    text-decoration: none;
+}
+
 .formHeader {
 
     margin: 50px 0px 0;

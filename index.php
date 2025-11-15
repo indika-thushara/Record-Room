@@ -28,7 +28,7 @@
                 <div class="card">
                     <img src="img/add.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <button href="AddUpdateFile.php" class="btn btn-primary" <?php echo $disable ?>>Add New FIle</button>
+                        <a href="AddUpdateFile.php" class="btn btn-primary <?php echo $disable ?>">Add New FIle</a>
                         <p>Add a new file into the system</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="card">
                     <img src="img/search.png" class="card-img-top d-block mx-auto mt-3" alt="..." style="width: 50%;">
                     <div class="card-body">
-                        <button href="SearchFile.php" class="btn btn-primary">Search FIle</button>
+                        <a href="SearchFile.php" class="btn btn-primary">Search FIle</a>
                         <p>Search files in the system</p>
                     </div>
                 </div>

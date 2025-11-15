@@ -76,9 +76,12 @@
                     <label class="form-label">Files to be distroid</label>
                     <a link type="button" href="FilestobeDistroied.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
-                <hr>              
-
-
+                <hr>    
+                <div class="mt-3">
+                    <label class="form-label">Summary of Files</label>
+                    <a link type="button" href="FilesSummary.php" class="btn btn-secondary float-end">Get report</a>
+                  </div>
+                <hr>               
             </div>
         </div>
     </div>
