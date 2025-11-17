@@ -68,12 +68,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="mt-3">
-                    <label class="form-label">Files are get back to the offiece</label>
+                    <label class="form-label">Files are get back to the office</label>
                     <a link type="button" href="FilesGetBackOffice.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
                 <hr>
                 <div class="mt-3">
-                    <label class="form-label">Files to be distroid</label>
+                    <label class="form-label">Files to be destroy</label>
                     <a link type="button" href="FilestobeDistroied.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
                 <hr>    

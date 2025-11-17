@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2025 at 05:24 PM
+-- Generation Time: Nov 17, 2025 at 05:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,9 +85,9 @@ CREATE TABLE `files` (
 INSERT INTO `files` (`fileNumber`, `fileName`, `fileClosedOn`, `ReceivedRROn`, `getBackOfficeOn`, `departmentName`, `officerName`, `ReceivedBackToRROn`, `cellNo`, `rackNo`, `fileDistroiedOn`, `Note`, `fileTypeId`) VALUES
 ('BA001/2018', 'P K ABERATHNA', '2018-12-31', '2023-05-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
 ('BA002/2015', 'M F M RISHAM', '2015-07-30', '2020-09-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
-('BA002/2018', 'MAHINDASIRI RANAWEERA', '2018-06-08', '2023-05-30', '2025-01-10', 'Engineering', 'jayalath', '0000-00-00', 25, 2, '0000-00-00', '', 3),
+('BA002/2018', 'MAHINDASIRI RANAWEERA', '2018-06-08', '2023-05-30', '2025-01-10', 'Engineering', 'K. Jayalath', '0000-00-00', 25, 2, '0000-00-00', '', 3),
 ('BA003/2015', 'T T BOGODAGE', '2016-05-30', '2021-09-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
-('BA004/2015', 'M P O DE SILVA', '2015-09-27', '2020-09-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
+('BA004/2015', 'M P O DE SILVA', '2015-09-27', '2020-09-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', 'ගොණුව පිළිබද සටහන', 3),
 ('BA005/2015', 'W D THAMINDA SAMAN KUMARA', '2015-08-20', '2020-09-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
 ('BA005/2018', 'PRATHAPA SAYAKKARAGE DINESH CHAMARA', '2018-04-19', '2023-05-30', '0000-00-00', '', '', '0000-00-00', 25, 2, '0000-00-00', '', 3),
 ('BA006/2015', 'L R KUMARA ABENAYAKA', '2015-08-01', '2020-09-30', '0000-00-00', '', '', '0000-00-00', 26, 2, '0000-00-00', '', 3),
@@ -204,9 +204,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`userId`, `userName`, `userRole`, `password`) VALUES
 (1, 'Indika', 'Admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'),
-(2, 'Asanga', 'Editor', 'Awd@25009'),
-(3, 'Thulankana', 'Editor', ''),
-(4, 'Janaka', 'Editor', '');
+(2, 'Asanga', 'Editor', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
+(3, 'Thulankana', 'Editor', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
+(4, 'Janaka', 'Editor', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
+(5, 'Admin', 'Admin', '4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8');
 
 --
 -- Indexes for dumped tables
@@ -264,7 +265,7 @@ ALTER TABLE `file_type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
