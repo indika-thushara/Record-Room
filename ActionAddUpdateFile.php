@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bakrron = $_POST['bakrron'];
     $cellNo = $_POST['cellNo'];
     $rackno = $_POST['rackno'];
+    $numPages = $_POST['numpage'];
     $fdeson = $_POST['fdeson'];
     $note = $_POST['note'];
     $ftype = $_POST['ftype'];
@@ -24,17 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($result && mysqli_num_rows($result) > 0) {
                 header("Location:AddUpdateFile.php?error=1");
             } else {
-                $sql = "update files set  fileName = ?, fileNumber= ?, fileClosedOn = ? , ReceivedRROn = ?, getBackOfficeOn = ?, departmentName = ?, officerName= ?, ReceivedBackToRROn = ?, cellNo = ?, rackNo = ?, fileDistroiedOn = ?, Note= ?, fileTypeId= ? where fileNumber = ?";
+                $sql = "update files set  fileName = ?, fileNumber= ?, fileClosedOn = ? , ReceivedRROn = ?, getBackOfficeOn = ?, departmentName = ?, officerName= ?, ReceivedBackToRROn = ?, cellNo = ?, rackNo = ?, numPages=?, fileDistroiedOn = ?, Note= ?, fileTypeId= ? where fileNumber = ?";
                 $saveStmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($saveStmt, 'ssssssssssssis', $fname, $fnum, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $fdeson, $note, $ftype, $ufnum);
+                mysqli_stmt_bind_param($saveStmt, 'sssssssssssssis', $fname, $fnum, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $numPages, $fdeson, $note, $ftype, $ufnum);
                 if (mysqli_stmt_execute($saveStmt)) {
                     header("Location:addUpdateFile.php?success=1");
                 }
             }
         } else {
-            $sql = "update files set  fileName = ?, fileNumber= ?, fileClosedOn = ? , ReceivedRROn = ?, getBackOfficeOn = ?, departmentName = ?, officerName= ?, ReceivedBackToRROn = ?, cellNo = ?, rackNo = ?, fileDistroiedOn = ?, Note= ?, fileTypeId= ? where fileNumber = ?";
+            $sql = "update files set  fileName = ?, fileNumber= ?, fileClosedOn = ? , ReceivedRROn = ?, getBackOfficeOn = ?, departmentName = ?, officerName= ?, ReceivedBackToRROn = ?, cellNo = ?, rackNo = ?, numPages=?, fileDistroiedOn = ?, Note= ?, fileTypeId= ? where fileNumber = ?";
             $saveStmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($saveStmt, 'ssssssssssssis', $fname, $fnum, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $fdeson, $note, $ftype, $ufnum);
+            mysqli_stmt_bind_param($saveStmt, 'sssssssssssssis', $fname, $fnum, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $numPages, $fdeson, $note, $ftype, $ufnum);
             if (mysqli_stmt_execute($saveStmt)) {
                 header("Location:addUpdateFile.php?success=1");
             }
@@ -45,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result && mysqli_num_rows($result) > 0) {
             header("Location:AddUpdateFile.php?error=1");
         }
-        $sql = "insert into files values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "insert into files values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $saveStmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($saveStmt, 'ssssssssssssi', $fnum, $fname, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $fdeson, $note, $ftype);
+        mysqli_stmt_bind_param($saveStmt, 'sssssssssssssi', $fnum, $fname, $fclon, $frecreon, $bakoffice,  $dname, $offname, $bakrron, $cellNo, $rackno, $numPages, $fdeson, $note, $ftype);
         if (mysqli_stmt_execute($saveStmt)) {
             header("Location:addUpdateFile.php?success=1");
         }

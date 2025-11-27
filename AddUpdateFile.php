@@ -55,6 +55,7 @@
                 $ReceivedBackToRROn = $row['ReceivedBackToRROn'];
                 $cellNo = $row['cellNo'];
                 $rackNo = $row['rackNo'];
+                $numPages = $row['numPages'];
                 $fileDistroiedOn = $row['fileDistroiedOn'];
                 $Note = $row['Note'];
                 $fileTypeId = $row['fileTypeId'];
@@ -122,10 +123,13 @@
                         <input type="date" name="frecreon" id="frecreon" class="form-control" value="<?php echo !empty($ReceivedRROn) ? $ReceivedRROn : ''; ?>">
                     </div>
                     <div class="row g-3 mt-3">
-                        <div class="col-sm-6 d-flex align-items-center text-nowrap gap-2">
+                        <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
+                            <label class="form-label">Number of Pages</label> <input type="text" maxlength="100" name="numpage" class="form-control" value="<?php echo !empty($numPages) ? $numPages : ''; ?>">
+                        </div>
+                        <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
                             <label class="form-label">Rack No</label> <input type="text" maxlength="3" name="rackno" class="form-control" value="<?php echo !empty($rackNo) ? $rackNo : ''; ?>">
                         </div>
-                        <div class="col-sm-6 d-flex align-items-center text-nowrap gap-2">
+                        <div class="col-sm-4 d-flex align-items-center text-nowrap gap-2">
                             <label class="form-label">Cell No</label><input type="text" maxlength="3" name="cellNo" class="form-control" value="<?php echo !empty($cellNo) ? $cellNo : ''; ?>">
                         </div>
                     </div>

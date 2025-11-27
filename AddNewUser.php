@@ -82,7 +82,7 @@
                     <div class="mt-3 text-center">
                         <button type="submit" name="submit" class="btn btn-primary me-4">Save</button>                        
                         <button type="reset" name="reset" class="btn btn-secondary me-4">Reset</button>
-                        <button type="submit" name="delete" class="btn btn-danger me-4">Delete</button>                        
+                        <button type="submit" <?php echo $_GET['mode'] == 'd' ? "" : "hidden"; ?> name="delete" class="btn btn-danger me-4">Delete</button>                        
                     </div>
                 </form>
             </div>
