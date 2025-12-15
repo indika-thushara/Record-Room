@@ -72,16 +72,21 @@
                     <a link type="button" href="FilesGetBackOffice.php" class="btn btn-secondary float-end">Get report</a>
                 </div>
                 <hr>
-                <div class="mt-3">
+                <div class="mt-3 clearfix">
                     <label class="form-label">Files to be destroy</label>
-                    <a link type="button" href="FilestobeDistroied.php" class="btn btn-secondary float-end">Get report</a>
+                    <!-- Add a form to select the date -->
+                    <form id="plain-form" action="FilestobeDistroied.php" method="POST" class="d-inline float-end">
+                        <label for="comparison_date">Date Upto:</label>
+                        <input type="date" id="comparison_date" name="comparison_date" required>
+                        <input type="submit" class="btn btn-secondary" value="Get report"></input>
+                    </form>
                 </div>
-                <hr>    
+                <hr>
                 <div class="mt-3">
                     <label class="form-label">Summary of Files</label>
                     <a link type="button" href="FilesSummary.php" class="btn btn-secondary float-end">Get report</a>
-                  </div>
-                <hr>               
+                </div>
+                <hr>
             </div>
         </div>
     </div>

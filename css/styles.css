@@ -29,6 +29,11 @@ form {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 
 }
+#plain-form {
+    background-color: transparent; 
+    box-shadow: none; 
+    border-radius: 0;             
+}
 
 .disabled{
     pointer-events: none; 

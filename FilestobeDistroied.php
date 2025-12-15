@@ -2,17 +2,28 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once 'db_connection.php';
 
-$sql = "Call filestobedistroid()";
+// Check if the form was submitted and a date was provided
+if (isset($_POST['comparison_date']) && !empty($_POST['comparison_date'])) {
+    // Sanitize and validate the input date
+    $comparisonDate = filter_var($_POST['comparison_date'], FILTER_SANITIZE_STRING);
+}
+
+// Prepare the CALL statement with a placeholder (?)
+$sql = "CALL filestobedistroid('" . $comparisonDate . "')";
+
+//$sql = "Call filestobedistroid()";
 $result = mysqli_query($conn, $sql);
 $title = "Files To Be Distroied.";
 $html = "<h2 style='text-align:center; margin-bottom:15px;'>$title</h2>";
 $html .= "<table border='1' cellpadding='8' cellspacing='0' width='100%'>
     <tr style='background:#f2f2f2;'>
-    <th>File number</th><th>File name</th><th>File Closed On</th><th>Rack No</th><th>Cell No</th>
+    <th></th><th>File number</th><th>File name</th><th>File Closed On</th><th>Rack No</th><th>Cell No</th>
     </tr>";
-
+$x = 0;
 while ($row = mysqli_fetch_assoc($result)) {
+    $x++;
     $html .= "<tr>
+    <td>{$x}</td>
         <td>{$row['fileNumber']}</td>
         <td>{$row['fileName']}</td>
         <td>{$row['fileClosedOn']}</td>
