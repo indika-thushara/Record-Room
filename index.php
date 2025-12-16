@@ -89,7 +89,7 @@
                         <div class="card-body text-center">
                             <?php
                             include "db_connection.php";
-                            $sql = "Call filestobedistroid()";
+                            $sql = "Call filestobedistroidtonow()";
                             $result = mysqli_query($conn, $sql);
                             if ($result)
                                 $c = mysqli_num_rows($result);

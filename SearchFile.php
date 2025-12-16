@@ -52,6 +52,8 @@
                                 <th scope="col">File Name</th>
                                 <th scope="col">File Number</th>
                                 <th scope="col">Type</th>
+                                <th scope="col">Rack No</th>
+                                <th scope="col">Cell No</th>
                                 <th scope="col">Action</th>
                                 <th scope="col"></th>
                             </tr>
@@ -71,13 +73,13 @@
                                     $result = '';
                                     if (!empty($_POST['fname'])) {
                                         $sFname =  trim($_POST['fname']);
-                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType FROM files f
+                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType, f.rackNo, f.cellNo FROM files f
                                         INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId                                        
                                         WHERE fileName LIKE '%" . $sFname . "%'";
                                     }
                                     if (!empty($_POST['fnum'])) {
                                         $sFnum =  trim($_POST['fnum']);
-                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType FROM files f
+                                        $sql = "SELECT f.fileNumber, f.fileName, ft.fileType, f.rackNo, f.cellNo FROM files f
                                         INNER JOIN file_Type ft ON f.fileTypeId = ft.fileTypeId    
                                         WHERE fileNumber LIKE '%" . $sFnum . "%'";
                                     }
@@ -87,12 +89,14 @@
                                             die("Query faild..." . $conn->error);
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
+                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['fileType'] . "</td><td>" . $row['rackNo'] . "</td><td>" . $row['cellNo'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
                                                 if ($row['fileType'] == 'Subdivision' || $row['fileType'] == 'Building Application')
                                                     echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Add more data</a></td></tr>";
                                                 else
                                                     echo "<td></td></tr>";
                                             }
+                                        }else{                                            
+                                            echo "<span class='text-danger'><b>No records found.</b></span>";
                                         }
                                     }
                                 }

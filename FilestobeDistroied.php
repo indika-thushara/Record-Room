@@ -2,16 +2,12 @@
 require __DIR__ . '/vendor/autoload.php';
 require_once 'db_connection.php';
 
-// Check if the form was submitted and a date was provided
+
 if (isset($_POST['comparison_date']) && !empty($_POST['comparison_date'])) {
-    // Sanitize and validate the input date
+   
     $comparisonDate = filter_var($_POST['comparison_date'], FILTER_SANITIZE_STRING);
 }
-
-// Prepare the CALL statement with a placeholder (?)
 $sql = "CALL filestobedistroid('" . $comparisonDate . "')";
-
-//$sql = "Call filestobedistroid()";
 $result = mysqli_query($conn, $sql);
 $title = "Files To Be Distroied.";
 $html = "<h2 style='text-align:center; margin-bottom:15px;'>$title</h2>";

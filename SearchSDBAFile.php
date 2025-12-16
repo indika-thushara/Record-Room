@@ -53,6 +53,8 @@
                                 <th scope="col">File Number</th>
                                 <th scope="col">ID Number</th>
                                 <th scope="col">Assesment Number</th>
+                                <th scope="col">Rack No</th>
+                                <th scope="col">Cell No</th>
                                 <th scope="col">Action</th>
                                 <th scope="col"></th>
                             </tr>
@@ -72,13 +74,13 @@
                                     $result = '';
                                     if (!empty($_POST['idno'])) {
                                         $sidno =  trim($_POST['idno']);
-                                        $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo FROM files f
+                                        $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo, f.rackNo, f.cellNo FROM files f
                                         INNER JOIN sdba sb ON f.fileNumber = sb.fileNumber                                        
                                         WHERE applicantIdNo LIKE '%" . $sidno . "%'";
                                     }
                                     if (!empty($_POST['assno'])) {
                                         $sassnum =  trim($_POST['assno']);
-                                        $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo FROM files f
+                                        $sql = "SELECT sb.fileNumber, f.fileName, sb.applicantIdNo, sb.assesmentNo, f.rackNo, f.cellNo FROM files f
                                         INNER JOIN sdba sb ON f.fileNumber = sb.fileNumber   
                                         WHERE assesmentNo LIKE '%" . $sassnum . "%'";
                                     }
@@ -88,10 +90,12 @@
                                             die("Query faild..." . $conn->error);                                        
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['applicantIdNo'] . "</td><td>" . $row['assesmentNo'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
+                                                echo "<tr><td>" . $row['fileName'] . "</td><td>" . $row['fileNumber'] . "</td><td>" . $row['applicantIdNo'] . "</td><td>" . $row['assesmentNo'] . "</td><td>" . $row['rackNo'] . "</td><td>" . $row['cellNo'] . "</td><td><a href='AddUpdateFile.php?ufno=" . $row['fileNumber'] . "'>Udate</a></td>";
                                                 echo "<td><a href=UpdateSDBAFile.php?ufno=" . $row['fileNumber'] . ">Update more data</a></td></tr>";
-                                                echo "<td></td></tr>";
+                                                echo "</tr>";
                                             }
+                                        }else{                                            
+                                            echo "<span class='text-danger'><b>No records found.</b></span>";
                                         }
                                     }
                                 }
